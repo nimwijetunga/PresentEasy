@@ -1,6 +1,6 @@
-let sent = require('./sentiment_analysis.js');
-let appendQuery = require('append-query')
-let request = require('request-promise');
+const sent = require('./sentiment_analysis.js');
+const appendQuery = require('append-query')
+const request = require('request-promise');
 
 async function img_search(text, fileType, size) {
 

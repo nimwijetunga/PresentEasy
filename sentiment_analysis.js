@@ -1,8 +1,8 @@
-let http = require('http');
-let https = require('https');
+const http = require('http');
+const https = require('https');
 
-let request = require('request-promise');
-let appendQuery = require('append-query')
+const request = require('request-promise');
+const appendQuery = require('append-query')
 
 
 
