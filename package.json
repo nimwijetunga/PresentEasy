@@ -18,5 +18,12 @@
   "bugs": {
     "url": "https://github.com/nimwijetunga/PresentEasy/issues"
   },
-  "homepage": "https://github.com/nimwijetunga/PresentEasy#readme"
+  "homepage": "https://github.com/nimwijetunga/PresentEasy#readme",
+  "dependencies": {
+    "append-query": "^2.0.1",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2"
+  }
 }
