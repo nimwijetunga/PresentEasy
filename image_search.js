@@ -2,6 +2,9 @@ const sent = require('./sentiment_analysis.js');
 const appendQuery = require('append-query')
 const request = require('request-promise');
 
+require('dotenv').config();
+
+
 async function img_search(text, fileType, size) {
 
     let uri = 'https://www.googleapis.com/customsearch/v1';
@@ -12,7 +15,8 @@ async function img_search(text, fileType, size) {
         start: 1,
         imgSize: size,
         filetype: fileType,
-        key: 'AIzaSyCu7tar_9fwTvOVaM0pRBOJRG9woDyFgDY',
+        searchType: 'image',
+        key:process.env.google_api_key,
         cx: '012557195855676627064:dmyd5ewwv8i'
     };
 
@@ -33,10 +37,11 @@ module.exports = {
             let response = await img_search(res_text[i], fileType, size);
             if (response.items == undefined) continue;
             for (var j in response.items) {
-                let url = response.items[j].htmlFormattedUrl;
+                let url = response.items[j].link;
                 if (url == undefined) continue;
                 urls.push(url);
             }
         }
+        return urls;
     }
 }

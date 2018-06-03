@@ -7,33 +7,45 @@ function logError(err){
     return {error:err};
 }
 
-function set_error(text, fileType, size){
-    if(text == undefined || fileType == undefined || size == undefined){
+function set_error(text, fileType, size, slide){
+    if(text == undefined || fileType == undefined || size == undefined || slide == undefined){
         return (logError('undefined parameters'));
-    }else if(fileType != "jpg" && fileType != "png"){//Currently only valid file types
+    }
+    if(fileType != "jpg" && fileType != "png"){//Currently only valid file types
         return (logError('Invalid File Type'));
-    }else if(size != 'small' && size !='medium' && size != 'large'){
+    }
+    if(size != 'small' && size !='medium' && size != 'large'){
         return (logError('Invalid File Size'));
+    }
+    if((typeof slide != "number") || slide < 0){
+        console.log(typeof slide);
+        return (logError("Invalid Slide Number"));
     }
     return false;
 }
 
 
-function get_img(text, fileType, size){
-    return {success:'success'};
+async function get_img(text, fileType, size, slide){
+    let urls = await img_search.get_img_url(text, fileType, size);
+    let response = {
+        slide_num:slide,
+        img_urls:urls
+    };
+    return JSON.stringify(response);
 }
 
-function get_res(req, res){
+async function get_res(req, res){
     let text = req.param('text');
     let fileType = req.param('fileType');
     let size = req.param('size');
-    let err = set_error(text, fileType, size);
+    let slide = parseInt(req.param('slide'));
+    let err = set_error(text, fileType, size, slide);
     if(err){
         res.status(500);
         res.send(err);
     }else{
         res.status(200);
-        res.send(get_img(text, fileType, size));
+        res.send(await get_img(text, fileType, size, slide));
     }
 }
 

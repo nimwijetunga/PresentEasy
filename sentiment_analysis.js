@@ -4,6 +4,8 @@ const https = require('https');
 const request = require('request-promise');
 const appendQuery = require('append-query')
 
+require('dotenv').config();
+
 
 
 var get_sentiment_response = {
@@ -16,7 +18,7 @@ var get_sentiment_response = {
         let uri = 'https://api.meaningcloud.com/sentiment-2.1';
 
         let params = {
-            key: 'bf0de25b9e1dc218deb0dec88bcb3ec0',
+            key: process.env.meaning_cloud_key,
             of: 'json',
             txt: get_sentiment_response.text,
             lang: 'en'
@@ -68,13 +70,13 @@ module.exports = {
 
         //Generate Search Text (Rudimentary For Now, in 25 increments)
         if (score <= 30) {
-            res_text = ["sad", "red gradient", "angry", "dark"];
+            res_text = ["sad background", "red gradient background", "angry background", "dark background"];
         } else if (score <= 50) {
-            res_text = ["neutral", "grey gradient", "monotone"]
+            res_text = ["neutra backgroundl", "grey gradient background", "monotone background"]
         } else if (score <= 75) {
-            res_text = ["happy", "blue gradient", "light"];
+            res_text = ["happ backgroundy", "blue gradient background", "light background"];
         } else {
-            res_text = ["ecstatic", "yellow gradient", "light"];
+            res_text = ["ecstatic background", "yellow gradient background", "light background"];
         }
 
         return res_text;
