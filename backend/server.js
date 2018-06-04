@@ -43,6 +43,17 @@ async function set_error_login(username, password) {
     return false;
 }
 
+async function set_error_save(username, img){
+    if(username == undefined || img == undefined){
+        return (posted(false, "Username OR Image NOT Provided"));
+    }
+    let save = await auth.update_user_img(username, img);
+    if(!save){
+        return(posted(false, "Error Saving Image"));
+    }
+    return false;
+}
+
 
 async function get_img(text, fileType, size, slide) {
     let urls = await img_search.get_img_url(text, fileType, size);
@@ -79,6 +90,18 @@ async function get_res_login(req, res) {
     }
 }
 
+async function get_res_save(req, res){
+    let username = req.param('username');
+    let img = req.param('img');
+    let err = await set_error_save(username, img);
+    res.status(200);
+    if(err){
+        res.send(err);
+    }else{
+        res.send(posted(true,"Saved Imaged Succesfully"));
+    }
+}
+
 app.use(cors());
 
 app.options('*', cors());
@@ -90,6 +113,8 @@ app.use(bodyParser.json());
 app.get('/api/img-search', [get_res]);
 
 app.get('/api/login', [get_res_login]);
+
+app.get('/api/save', [get_res_save]);
 
 app.listen(3001, function () {
     console.log('Server has started');
