@@ -8,7 +8,7 @@ require('dotenv').config();
 async function img_search(text, fileType, size) {
 
     let uri = 'https://www.googleapis.com/customsearch/v1';
-
+    
     let params = {
         q: text,
         num: 2,

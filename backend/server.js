@@ -3,6 +3,7 @@ const app = express();
 const img_search = require('./image_search.js');
 const bodyParser = require('body-parser');
 const auth = require('./user_db.js');
+const cors = require('cors');
 
 function logError(err) {
     return { error: err };
@@ -58,11 +59,10 @@ async function get_res(req, res) {
     let size = req.param('size');
     let slide = parseInt(req.param('slide'));
     let err = set_error(text, fileType, size, slide);
+    res.status(200);
     if (err) {
-        res.status(500);
         res.send(err);
     } else {
-        res.status(200);
         res.send(await get_img(text, fileType, size, slide));
     }
 }
@@ -71,14 +71,17 @@ async function get_res_login(req, res) {
     let username = req.param('username');
     let password = req.param('password');
     let err = await set_error_login(username, password);
+    res.status(200);
     if (err) {
-        res.status(500);
         res.send(err);
     } else {
-        res.status(200);
         res.send(posted(true,"Success"));
     }
 }
+
+app.use(cors());
+
+app.options('*', cors());
 
 app.use(bodyParser.urlencoded());
 
