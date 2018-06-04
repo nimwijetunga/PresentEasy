@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="sign-in.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="find-img.js"></script>
 </head>
+
 <body>
 
-<h2>Find Images</h2>
+    <h2>Find Images</h2>
+
+    <form id="find-img">
+        Text:
+        <br>
+        <textarea id="text" rows="10" cols="30"></textarea>
+        <br> 
+        File Type:
+        <br>
+        <input id="fileType" type="text">
+        <br>
+        Size:
+        <br>
+        <input id="size" type="text">
+        <br>
+        Slide Number:
+        <br>
+        <input id="slide" type="text">
+        <br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="error">
+        <p style="color:red;" id="error-p"></p>
+    </div>
+
+    <div id="img-urls">
+        <ul id="list"></ul>
+    </div>
 
 </body>
+
 </html>
