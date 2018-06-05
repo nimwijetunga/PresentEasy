@@ -9,7 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 ```
-Node.js, Browser
+Node.js, npm, Browser 
 ```
 
 ### Installing
@@ -23,13 +23,18 @@ git clone git@github.com:nimwijetunga/PresentEasy.git
 cd into project directory -> cd to backend folder 
 
 ```
-cd PresentEasy > cd Backend
+cd PresentEasy/backend
+```
+
+install dependencies
+```
+npm install
 ```
 
 start the server by running
 
 ```
-node server.js
+node server.js (or nodemon server.js)
 ```
 
 Try out the app by opening the file
