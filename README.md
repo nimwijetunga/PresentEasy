@@ -20,15 +20,22 @@ clone this repo
 git clone git@github.com:nimwijetunga/PresentEasy.git
 ```
 
-cd into project directory -> cd to backend folder 
+cd into project directory
 
 ```
-cd PresentEasy/backend
+cd PresentEasy
 ```
 
 install dependencies
+
 ```
 npm install
+```
+
+cd into backend folder
+
+```
+cd backend
 ```
 
 start the server by running
