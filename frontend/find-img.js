@@ -1,6 +1,7 @@
 $(document).ready(function (e) {
     find_img_urls();
     save_img();
+    logout();
 });
 
 function find_img_urls() {
@@ -12,6 +13,12 @@ function find_img_urls() {
         let slide = $("#slide").val();
         find_img_req(text, fileType, size, slide);
         save_img();
+    });
+}
+
+function logout(){
+    $('#logout').click(function(e){
+        $.cookie("username", null);
     });
 }
 
