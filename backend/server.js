@@ -63,6 +63,15 @@ async function get_img(text, fileType, size, slide) {
     return JSON.stringify(response);
 }
 
+async function get_profile(username){
+    if(username == undefined) return posted(false, "Username not provided");
+    let profile = await auth.get_user_profile(username);
+    if(!profile)return posted(false, "Unable to get profile");
+    profile['posted'] = true;
+    profile['message'] = "Succesful";
+    return JSON.stringify(profile);
+}
+
 async function get_res(req, res) {
     let text = req.param('text');
     let fileType = req.param('fileType');
@@ -101,19 +110,28 @@ async function get_res_save(req, res){
     }
 }
 
+async function get_res_profile(req, res){
+    let username = req.param('username');
+    let profile = await get_profile(username);
+    res.status(200);
+    res.send(profile);
+}
+
 app.use(cors());
 
 app.options('*', cors());
 
 app.use(bodyParser.urlencoded());
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/*+json' }));
 
 app.get('/api/img-search', [get_res]);
 
 app.get('/api/login', [get_res_login]);
 
 app.get('/api/save', [get_res_save]);
+
+app.get('/api/profile', [get_res_profile]);
 
 app.listen(3001, function () {
     console.log('Server has started');

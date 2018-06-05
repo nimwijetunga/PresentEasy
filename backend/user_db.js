@@ -71,5 +71,14 @@ module.exports = {
                 else resolve(true);
             })
         });
+    },
+    get_user_profile: async function(username){
+        let res = await find_user_info(username);
+        if(!res)return false;
+        let profile = {
+            username:res.username,
+            img:res.img
+        };
+        return profile;
     }
 }
