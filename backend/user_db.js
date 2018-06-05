@@ -21,21 +21,6 @@ var add_user = function (username, password) {
     });
 }
 
-var user_exists = function (username, password) {
-    return new Promise(function (resolve, reject) {
-        let exists = false;
-        usersRef.on('value', function (snap) {
-            snap.forEach(function (child) {
-                let val = child.val();
-                let email = val.email;
-                let pass = val.password;
-                if (username == email) resolve(pass);//User exists
-            });
-            resolve(false);//User doesn't exists
-        });
-    });
-}
-
 var find_user_info = function (username) {
     return new Promise(function (resolve, reject) {
         usersRef.on('value', function (snap) {
@@ -61,11 +46,11 @@ var find_user_info = function (username) {
 
 module.exports = {
     login: async function (username, password) {
-        let res = await user_exists(username, password);
+        let res = await find_user_info(username);
         if (!res) {
             return await add_user(username, password);
         } else {
-            if (res == password) return true;
+            if (res.password == password) return true;
             else return false;
         }
     },
