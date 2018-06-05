@@ -54,7 +54,6 @@ async function set_error_save(username, img){
     return false;
 }
 
-
 async function get_img(text, fileType, size, slide) {
     let urls = await img_search.get_img_url(text, fileType, size);
     let response = {

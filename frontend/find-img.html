@@ -3,6 +3,7 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="find-img.js"></script>
 </head>
 
@@ -14,16 +15,13 @@
         Text:
         <br>
         <textarea id="text" rows="10" cols="30"></textarea>
-        <br> 
-        File Type:
+        <br> File Type:
         <br>
         <input id="fileType" type="text">
-        <br>
-        Size:
+        <br> Size:
         <br>
         <input id="size" type="text">
-        <br>
-        Slide Number:
+        <br> Slide Number:
         <br>
         <input id="slide" type="text">
         <br>
@@ -37,6 +35,19 @@
 
     <div id="img-urls">
         <ul id="list"></ul>
+    </div>
+
+    <form id="save-img">
+        Image Url:
+        <br>
+        <input id="img" type="text">
+        <br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="msg-save">
+        <p style="color:red;" id="save-p"></p>
     </div>
 
 </body>

@@ -26,6 +26,7 @@ $(document).ready(function(e) {
             let message = res.message;
             $("#error > #error-p").text(message);
         }else{
+            $.cookie("username", username, 1);
             window.location.href = PATH + "/find-img.html";
         }
     });
