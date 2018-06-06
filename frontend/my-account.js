@@ -1,5 +1,6 @@
 $(document).ready(function (e) {
     set_profile();
+    delete_img();
 });
 
 async function set_profile() {
@@ -27,6 +28,35 @@ async function set_profile() {
         count++;
     }
 
+}
+
+function delete_img(){
+    $("#delete-img").submit(function (e) {
+        e.preventDefault();
+        let img = $("#delete-img > #img").val();
+        let username = $.cookie("username");
+        delete_img_req(img,username);
+    });
+}
+
+function delete_img_req(img, username){
+    let uri = 'http://localhost:3001/api/delete-img';
+    let params = {
+        username: username,
+        img: img
+    };
+    let param_serial = $.param(params);
+    let url = uri + "?" + param_serial;
+
+    $.get(url, function(res){
+        if(!res.posted){
+            $("#msg-del > #del-p").css('color', 'red');
+        } else {
+            $("#msg-del > #del-p").css('color', 'green');
+            set_profile();
+        }
+        $("#msg-del > #del-p").text(res.message);
+    })
 }
 
 function get_profile(username) {
