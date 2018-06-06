@@ -12,7 +12,7 @@ async function set_profile() {
     }catch(e){
         console.log(e);
     }
-    
+
     if (!profile.posted) {
         $("#profile > #error").text(profile.message);
         return;
@@ -23,7 +23,7 @@ async function set_profile() {
     $("#images > #img-title").text("Saved Images");
     $("#images > #img-title").css("font-weight","Bold");
     for (var i in urls) {
-        $("#images > #list").append('<li> <a target="_blank" href=' + urls[i] + '>' + "Image " + count + '</a>' + '</li>');
+        $("#images > #list").append('<li> <img src=' + urls[i] + '>' + '</li>');
         count++;
     }
 

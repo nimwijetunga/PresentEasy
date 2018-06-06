@@ -54,6 +54,17 @@ async function set_error_save(username, img){
     return false;
 }
 
+async function set_error_delete_img(username, img){
+    if(username == undefined || img == undefined){
+        return (posted(false, "Username OR Image NOT Provided"));
+    }
+    let save = await auth.delete_img(username, img);
+    if(!save){
+        return(posted(false, "Error Deleting Image"));
+    }
+    return false;
+}
+
 async function get_img(text, fileType, size, slide) {
     let urls = await img_search.get_img_url(text, fileType, size);
     let response = {
@@ -117,6 +128,18 @@ async function get_res_profile(req, res){
     res.send(profile);
 }
 
+async function get_res_del_img(req, res){
+    let username = req.param('username');
+    let img = req.param('img');
+    let err = await set_error_delete_img(username, img);
+    res.status(200);
+    if(err){
+        res.send(err);
+    }else{
+        res.send(posted(true,"Deleted Imaged Succesfully"));
+    }
+}
+
 app.use(cors());
 
 app.options('*', cors());
@@ -132,6 +155,8 @@ app.get('/api/login', [get_res_login]);
 app.get('/api/save', [get_res_save]);
 
 app.get('/api/profile', [get_res_profile]);
+
+app.get('/api/delete-img', [get_res_del_img]);
 
 app.listen(3001, function () {
     console.log('Server has started');

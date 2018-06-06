@@ -58,7 +58,8 @@ module.exports = {
         let user = await find_user_info(username);
         if (!user) return false;
         let images = user.img;
-        images.push(img_url);
+        if (user.img != null) images.push(img_url);
+        else images = [img_url];
         let update = {
             img: images
         };
@@ -72,13 +73,34 @@ module.exports = {
             })
         });
     },
-    get_user_profile: async function(username){
+    get_user_profile: async function (username) {
         let res = await find_user_info(username);
-        if(!res)return false;
+        if (!res) return false;
         let profile = {
-            username:res.username,
-            img:res.img
+            username: res.username,
+            img: res.img
         };
         return profile;
+    },
+    delete_img: async function (username, img) {
+        let user = await find_user_info(username);
+
+        if (!user || user.img == undefined) return false;
+
+        let index = -1;
+        for (var i in user.img) {
+            if (user.img[i] == img) {
+                index = i;
+                break;
+            }
+        }
+        if (index == -1) return false;
+
+        return new Promise(function (resolve, reject) {
+            ref.child('users').child(user.key).child('img').child(index).remove(function (err) {
+                if (err) resolve(false);
+                else resolve(true);
+            });
+        });
     }
 }
