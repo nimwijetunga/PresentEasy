@@ -1,6 +1,10 @@
+
+
 $(document).ready(function(e) {   
     sign_in_submit();
  });
+
+
 
  function sign_in_submit(){
     $("#sign-in").submit(function (e) {
@@ -27,7 +31,8 @@ $(document).ready(function(e) {
             $("#error > #error-p").text(message);
         }else{
             $.cookie("username", username, 1);
-            window.location.href = PATH + "/find-img.html";
+            let global = new Global();
+            window.location.href = global._getPath("/find-img.html");
         }
     });
  }

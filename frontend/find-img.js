@@ -19,6 +19,8 @@ function find_img_urls() {
 function logout(){
     $('#logout').click(function(e){
         $.cookie("username", null);
+        let global = new Global();
+        global._redirect();
     });
 }
 
