@@ -47,6 +47,7 @@ function get_final_score(response) {
     response = JSON.parse(JSON.stringify(response));
     let rating = response.score_tag;
     let confidence = (response.confidence) / 100;
+
     if (rating == 'P+') {
         return 100 * confidence;
     } else if (rating == 'P') {
@@ -68,13 +69,15 @@ module.exports = {
 
         let res_text = [];
 
+        console.log(score);
+
         //Generate Search Text (Rudimentary For Now, in 25 increments)
         if (score <= 30) {
             res_text = ["sad background", "red gradient background", "angry background", "dark background"];
         } else if (score <= 50) {
-            res_text = ["neutra backgroundl", "grey gradient background", "monotone background"]
+            res_text = ["neutral backgroundl", "grey gradient background", "monotone background"]
         } else if (score <= 75) {
-            res_text = ["happ backgroundy", "blue gradient background", "light background"];
+            res_text = ["happy backgroundy", "blue gradient background", "light background"];
         } else {
             res_text = ["ecstatic background", "yellow gradient background", "light background"];
         }

@@ -2,6 +2,7 @@ $(document).ready(function (e) {
     find_img_urls();
     save_img();
     logout();
+    voice_record();
 });
 
 function find_img_urls() {
@@ -14,6 +15,11 @@ function find_img_urls() {
         find_img_req(text, fileType, size, slide);
         save_img();
     });
+}
+
+
+function voice_record(){
+    let record = new VoiceRecord();
 }
 
 function logout(){

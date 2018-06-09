@@ -1,5 +1,3 @@
-// var PATH = "file:///C:/Users/Nim%20Wijetunga/Documents/PresentEasy/frontend"
-
 class Global {
     
     constructor(){
@@ -12,7 +10,6 @@ class Global {
 
     _redirect(){
         if(document.cookie != "" && $.cookie().username != "null")return;
-        console.log("Here");
         let loc = window.location.href;
         if(loc.indexOf("index.html") == -1){
             window.location.href = this._path + "/index.html";
