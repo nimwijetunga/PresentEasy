@@ -161,5 +161,5 @@ app.get('/api/delete-img', [get_res_del_img]);
 app.set( 'port', ( process.env.PORT || 3001 ));
 
 app.listen(app.get('port'), function () {
-    console.log('Server has started');
+    console.log('Server running on port: ' + app.get('port'));
 });
