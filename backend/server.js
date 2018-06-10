@@ -33,7 +33,7 @@ function set_error(text, fileType, size, slide) {
 }
 
 async function set_error_login(username, password) {
-    if (username == undefined || password == undefined) {
+    if (username == undefined || password == undefined ||username == "" || password ==  "") {
         return (posted(false, "Password OR Username not provided"));
     }
     let login = await auth.login(username, password);

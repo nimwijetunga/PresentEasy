@@ -4,6 +4,7 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="find-img.js"></script>
@@ -11,34 +12,37 @@
 
 <body>
 
+    <style>
+        body {
+            background: linear-gradient(#2BC0E4, #EAECC6);
+        }
+    </style>
+
     <h2 class="text-center">Find Images</h2>
 
     <br>
     <br>
 
     <form id="find-img">
-        <div class="form-group">
-            <label for="text">Text:</label>
-            <textarea id="text" class="form-control" rows="3"></textarea>
+        <div class="row justify-content-center">
+            <div class="form-group">
+                <label for="text">Text:</label>
+                <textarea id="text" class="form-control" rows="3"></textarea>
+                <label for="fileType">File Type:</label>
+                <input class="form-control" id="fileType" placeholder="png">
+                <label for="size">Size:</label>
+                <input class="form-control" id="size" placeholder="medium">
+                <label for="slide">Slide:</label>
+                <input class="form-control" id="slide" placeholder="3">
+                <br>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary text-center" value="Submit">Submit Text</button>
+                </div>
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="fileType">File Type:</label>
-            <input class="form-control" id="fileType" placeholder="png">
-        </div>
+        <div class="row">
 
-        <div class="form-group">
-            <label for="size">Size:</label>
-            <input class="form-control" id="size" placeholder="medium">
-        </div>
-
-        <div class="form-group">
-            <label for="slide">Slide:</label>
-            <input class="form-control" id="slide" placeholder="3">
-        </div>
-
-        <div class="text-center">
-            <button type="submit" class="btn btn-primary text-center" value="Submit">Submit Text</button>
         </div>
     </form>
 
@@ -48,21 +52,28 @@
         <p id="error-p" style="color:red;" class="text-center"></p>
     </div>
 
+
+    <p class="text-center" id="loader">
+    </p>
+
     <div id="img-urls" class="carousel slide" data-ride="carousel">
         <div id="list" class="carousel-inner"></div>
     </div>
 
-    <br><br>
+    <br>
+    <br>
 
     <form id="save-img">
 
-        <div class="form-group">
-            <label for="img">Image URL:</label>
-            <input class="form-control" id="img" placeholder="something.jpg">
-        </div>
-
-        <div class="text-center">
-            <button type="submit" class="btn btn-primary text-center" value="Submit">Save Image</button>
+        <div class="row justify-content-center">
+            <div class="form-group">
+                <label for="img">Image URL:</label>
+                <input class="form-control" id="img" placeholder="something.jpg">
+                <br>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary text-center" value="Submit">Save Image</button>
+                </div>
+            </div>
         </div>
     </form>
 

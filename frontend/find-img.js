@@ -7,6 +7,7 @@ $(document).ready(function (e) {
 function find_img_urls() {
     $("#find-img").submit(function (e) {
         e.preventDefault();
+        $("#loader").append('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>');
         let text = $("#text").val();
         let fileType = $("#fileType").val();
         let size = $("#size").val();
@@ -65,6 +66,7 @@ function find_img_req(text, fileType, size, slide) {
     let param_serial = $.param(params);
     let url = uri + "?" + param_serial;
     $.get(url, function (res) {
+        $("#loader").html('');  
         console.log(res);
         if (res.error) {
             $('#img-urls > #list').html('');
