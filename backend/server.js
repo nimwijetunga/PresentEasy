@@ -44,7 +44,7 @@ async function set_error_login(username, password) {
 }
 
 async function set_error_save(username, img){
-    if(username == undefined || img == undefined){
+    if(username == undefined || img == undefined || img == ""){
         return (posted(false, "Username OR Image NOT Provided"));
     }
     let save = await auth.update_user_img(username, img);

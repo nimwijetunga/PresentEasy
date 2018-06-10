@@ -2,61 +2,94 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="find-img.js"></script>
-
 </head>
 
 <body>
 
-    <h2>Find Images</h2>
+    <h2 class="text-center">Find Images</h2>
+
+    <br>
+    <br>
 
     <form id="find-img">
-        Text:
-        <br>
-        <textarea id="text" rows="10" cols="30"></textarea>
-        <br> File Type:
-        <br>
-        <input id="fileType" type="text">
-        <br> Size:
-        <br>
-        <input id="size" type="text">
-        <br> Slide Number:
-        <br>
-        <input id="slide" type="text">
-        <br>
-        <br>
-        <input type="submit" value="Submit">
+        <div class="form-group">
+            <label for="text">Text:</label>
+            <textarea id="text" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="fileType">File Type:</label>
+            <input class="form-control" id="fileType" placeholder="png">
+        </div>
+
+        <div class="form-group">
+            <label for="size">Size:</label>
+            <input class="form-control" id="size" placeholder="medium">
+        </div>
+
+        <div class="form-group">
+            <label for="slide">Slide:</label>
+            <input class="form-control" id="slide" placeholder="3">
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary text-center" value="Submit">Submit Text</button>
+        </div>
     </form>
+
+    <br>
 
     <div id="error">
-        <p style="color:red;" id="error-p"></p>
+        <p id="error-p" style="color:red;" class="text-center"></p>
     </div>
 
-    <div id="img-urls">
-        <ul id="list"></ul>
+    <div id="img-urls" class="carousel slide" data-ride="carousel">
+        <div id="list" class="carousel-inner"></div>
     </div>
+
+    <br><br>
 
     <form id="save-img">
-        Image Url:
-        <br>
-        <input id="img" type="text">
-        <br>
-        <br>
-        <input type="submit" value="Submit">
+
+        <div class="form-group">
+            <label for="img">Image URL:</label>
+            <input class="form-control" id="img" placeholder="something.jpg">
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary text-center" value="Submit">Save Image</button>
+        </div>
     </form>
 
+    <br>
+
     <div id="msg-save">
-        <p style="color:red;" id="save-p"></p>
+        <p id="save-p" style="color:red;" class="text-center"></p>
     </div>
 
-    <p>
-        <a id="logout" href="#">Logout</a>
-        <a id="sign-in" href="index.html">Sign-in</a>
-        <br>
-        <a id="My Account" href="my-account.html">My Account</a>
+    <div id="msg-save">
+        <p id="save-p" style="color:red;" class="text-center"></p>
+    </div>
+
+    <p class="text-center">
+        <a id="logout" class="text-left" href="#">Logout</a>
     </p>
+
+    <p class="text-center">
+        <a id="sign-in" class="text-center" href="index.html">Sign-in</a>
+    </p>
+
+    <p class="text-center">
+        <a id="My Account" class="text-right" href="my-account.html">My Account</a>
+    </p>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
 
 </body>
 

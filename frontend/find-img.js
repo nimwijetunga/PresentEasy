@@ -2,7 +2,6 @@ $(document).ready(function (e) {
     find_img_urls();
     save_img();
     logout();
-    voice_record();
 });
 
 function find_img_urls() {
@@ -15,11 +14,6 @@ function find_img_urls() {
         find_img_req(text, fileType, size, slide);
         save_img();
     });
-}
-
-
-function voice_record(){
-    let record = new VoiceRecord();
 }
 
 function logout(){
@@ -80,10 +74,10 @@ function find_img_req(text, fileType, size, slide) {
             let urls = res.img_urls;
             $("#error > #error-p").text('');
             $('#img-urls > #list').html('');
-            let count = 0;
-            for (var i in urls) {
-                $("#img-urls > #list").append('<li> <a target="_blank" href=' + urls[i] + '>' + "Image " + count + '</a>' + '</li>');
-                count++;
+            $("#img-urls .carousel-inner").eq(0).append('<div class="carousel-item active"><img class="d-block w-100" src="'+ urls[0] +'" alt="First slide"> </div>');
+            for (var i = 1; i < urls.length; i++) {
+                let html = '<div class="carousel-item"><img class="d-block w-100" src="'+ urls[i] +'" alt="First slide"> </div>';
+                $("#img-urls .carousel-inner").eq(0).append(html);
             }
         }
     });
