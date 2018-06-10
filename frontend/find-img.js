@@ -2,6 +2,7 @@ $(document).ready(function (e) {
     find_img_urls();
     save_img();
     logout();
+    _redirect();
 });
 
 function find_img_urls() {
@@ -13,16 +14,19 @@ function find_img_urls() {
         let size = $("#size").val();
         let slide = $("#slide").val();
         find_img_req(text, fileType, size, slide);
-        save_img();
     });
 }
 
 function logout(){
     $('#logout').click(function(e){
         $.cookie("username", null);
-        let global = new Global();
-        global._redirect();
+        _redirect();
     });
+}
+
+function _redirect(){
+    let global = new Global();
+    global._redirect();
 }
 
 function save_img() {

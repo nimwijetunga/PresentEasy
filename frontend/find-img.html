@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="globals.js"></script>
     <script src="find-img.js"></script>
 </head>
 
@@ -29,9 +30,16 @@
                 <label for="text">Text:</label>
                 <textarea id="text" class="form-control" rows="3"></textarea>
                 <label for="fileType">File Type:</label>
-                <input class="form-control" id="fileType" placeholder="png">
+                <select class="form-control" id="fileType">
+                    <option>jpg</option>
+                    <option>png</option>
+                </select>
                 <label for="size">Size:</label>
-                <input class="form-control" id="size" placeholder="medium">
+                <select class="form-control" id="size">
+                    <option>small</option>
+                    <option>medium</option>
+                    <option>large</option>
+                </select>
                 <label for="slide">Slide:</label>
                 <input class="form-control" id="slide" placeholder="3">
                 <br>
@@ -63,7 +71,6 @@
     <br>
 
     <form id="save-img">
-
         <div class="row justify-content-center">
             <div class="form-group">
                 <label for="img">Image URL:</label>

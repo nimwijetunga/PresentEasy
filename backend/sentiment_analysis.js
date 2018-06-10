@@ -73,7 +73,7 @@ module.exports = {
 
         //Generate Search Text (Rudimentary For Now, in 25 increments)
         if (score <= 30) {
-            res_text = ["sad background", "red gradient background", "angry background", "dark background"];
+            res_text = ["sad face png", "red sad background png", "angry person background", "dark background"];
         } else if (score <= 50) {
             res_text = ["neutral backgroundl", "grey gradient background", "monotone background"]
         } else if (score <= 75) {

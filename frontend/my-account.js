@@ -8,9 +8,9 @@ async function set_profile() {
     let data = await (get_profile(username));
     let profile = data;
 
-    try{
+    try {
         profile = JSON.parse(data)
-    }catch(e){
+    } catch (e) {
         console.log(e);
     }
 
@@ -18,27 +18,28 @@ async function set_profile() {
         $("#profile > #error").text(profile.message);
         return;
     }
-    let count = 0;
     let urls = profile.img;
-    $("#images > #img-title").text("Saved Images");
-    $("#images > #img-title").css("font-weight","Bold");
-    for (var i in urls) {
-        $("#images > #list").append('<li> <img src=' + urls[i] + '>' + '</li>');
-        count++;
+    $('#img-urls > #list').html('');
+    if (urls[0]) {
+        $("#img-urls .carousel-inner").eq(0).append('<div class="carousel-item active"><img class="d-block w-100" src="' + urls[0] + '" alt="First slide"> </div>');
     }
-
+    for (var i = 1; i < urls.length; i++) {
+        let html = '<div class="carousel-item"><img class="d-block w-100" src="' + urls[i] + '" alt="First slide"> </div>';
+        $("#img-urls .carousel-inner").eq(0).append(html);
+    }
 }
 
-function delete_img(){
+function delete_img() {
     $("#delete-img").submit(function (e) {
         e.preventDefault();
-        let img = $("#delete-img > #img").val();
+        let img = $("#img-del").val();
+        console.log(img);
         let username = $.cookie("username");
-        delete_img_req(img,username);
+        delete_img_req(img, username);
     });
 }
 
-function delete_img_req(img, username){
+function delete_img_req(img, username) {
     let uri = 'http://localhost:3001/api/delete-img';
     let params = {
         username: username,
@@ -46,9 +47,10 @@ function delete_img_req(img, username){
     };
     let param_serial = $.param(params);
     let url = uri + "?" + param_serial;
+    console.log(url);
 
-    $.get(url, function(res){
-        if(!res.posted){
+    $.get(url, function (res) {
+        if (!res.posted) {
             $("#msg-del > #del-p").css('color', 'red');
         } else {
             $("#msg-del > #del-p").css('color', 'green');
