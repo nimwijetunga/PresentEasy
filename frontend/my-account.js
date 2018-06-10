@@ -18,7 +18,6 @@ async function set_profile() {
         $("#profile > #error").text(profile.message);
         return;
     }
-    $("#profile > #username").text("Username:" + profile.username);
     let count = 0;
     let urls = profile.img;
     $("#images > #img-title").text("Saved Images");
