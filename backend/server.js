@@ -158,6 +158,8 @@ app.get('/api/profile', [get_res_profile]);
 
 app.get('/api/delete-img', [get_res_del_img]);
 
-app.listen(3001, function () {
+app.set( 'port', ( process.env.PORT || 3001 ));
+
+app.listen(app.get('port'), function () {
     console.log('Server has started');
 });
