@@ -158,9 +158,9 @@ app.get('/api/profile', [get_res_profile]);
 
 app.get('/api/delete-img', [get_res_del_img]);
 
-app.set( 'port', ( 3001 ));
+app.set( 'port', ( process.env.PORT || 3001 ));
 
-app.use(express.static('frontend'))
+app.use(express.static('frontend'));
 
 app.listen(app.get('port'), function () {
     console.log('Server running on port: ' + app.get('port'));
