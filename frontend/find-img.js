@@ -39,7 +39,7 @@ function save_img() {
 }
 
 function save_img_req(img, username) {
-    let uri = 'http://localhost:3001/api/save';
+    let uri = 'http://localhost:80/api/save';
     let params = {
         username: username,
         img: img
@@ -59,7 +59,7 @@ function save_img_req(img, username) {
 }
 
 function find_img_req(text, fileType, size, slide) {
-    let uri = 'http://localhost:3001/api/img-search';
+    let uri = 'http://localhost:80/api/img-search';
 
     let params = {
         text: text,

@@ -40,7 +40,7 @@ function delete_img() {
 }
 
 function delete_img_req(img, username) {
-    let uri = 'http://localhost:3001/api/delete-img';
+    let uri = 'http://localhost:80/api/delete-img';
     let params = {
         username: username,
         img: img
@@ -61,7 +61,7 @@ function delete_img_req(img, username) {
 }
 
 function get_profile(username) {
-    let uri = 'http://localhost:3001/api/profile';
+    let uri = 'http://localhost:80/api/profile';
     let params = {
         username: username
     };

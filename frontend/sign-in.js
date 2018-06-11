@@ -16,7 +16,7 @@ $(document).ready(function(e) {
  }
 
  function sign_in_req(username,password){
-     let uri = 'http://localhost:3001/api/login';
+     let uri = 'http://localhost:80/api/login';
      let params = {
         username:username,
         password:password 
