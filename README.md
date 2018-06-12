@@ -2,7 +2,7 @@
 
 PresentEasy is a web application that allows users to input text and recieve several images based on the tone or mood of their text. This app provides an ideal way for presenters to easily find "background" images that fit their presentations.
 
-## Getting Started
+## Getting Started (Locally)
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
@@ -32,16 +32,10 @@ install dependencies
 npm install
 ```
 
-cd into backend folder
-
-```
-cd backend
-```
-
 start the server by running
 
 ```
-node server.js (or nodemon server.js)
+npm start
 ```
 
 Try out the app by opening the file
@@ -49,3 +43,7 @@ Try out the app by opening the file
 ```
 index.html
 ```
+
+## Deploy To Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/nimwijetunga/PresentEasy)
