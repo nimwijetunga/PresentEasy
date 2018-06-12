@@ -1,0 +1,7 @@
+{
+    "name": "PresentEasy",
+    "description": "A web app to analayze text sentiment and provide suitable images",
+    "repository": "https://github.com/nimwijetunga/PresentEasy",
+    "keywords": ["node", "express", "HTML5"],
+    "success_url": "/index.html"
+  }
