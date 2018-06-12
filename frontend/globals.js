@@ -8,10 +8,16 @@ class Global {
             this._server = "http://localhost:80";
             this._path = "file:///C:/Users/Nim%20Wijetunga/Documents/PresentEasy/frontend";
         }else{
-            this._path = "https://presenteasy.herokuapp.com";
+            this._host = (new URL(window.location.href)).hostname;
+            this._path = `https://${this._host}`;
             this._server = this._path;
         }
         console.log(this._path);
+    }
+
+
+    _getAppName(){
+
     }
 
 
