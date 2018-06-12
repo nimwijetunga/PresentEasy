@@ -1,7 +1,23 @@
 class Global {
     
     constructor(){
-        this._path = "file:///C:/Users/Nim%20Wijetunga/Documents/PresentEasy/frontend";
+        this._env = this._getEnv();
+        this._path = "";
+        this._server = "";
+        if(this._env == "DEV"){
+            this._server = "http://localhost:80";
+            this._path = "file:///C:/Users/Nim%20Wijetunga/Documents/PresentEasy/frontend";
+        }else{
+            this._path = "https://presenteasy.herokuapp.com";
+            this._server = this._path;
+        }
+        console.log(this._path);
+    }
+
+
+    _getEnv(){
+        if(window.location.href.indexOf("heroku") !== -1)return "PROD";
+        return "DEV";
     }
 
     _getPath(file){

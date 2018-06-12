@@ -1,4 +1,7 @@
+let g = null;
+
 $(document).ready(function (e) {
+    g = new Global();
     find_img_urls();
     save_img();
     logout();
@@ -25,8 +28,7 @@ function logout(){
 }
 
 function _redirect(){
-    let global = new Global();
-    global._redirect();
+    //g._redirect();
 }
 
 function save_img() {
@@ -39,7 +41,7 @@ function save_img() {
 }
 
 function save_img_req(img, username) {
-    let uri = 'http://localhost:80/api/save';
+    let uri = g._server + '/api/save';
     let params = {
         username: username,
         img: img
@@ -59,7 +61,7 @@ function save_img_req(img, username) {
 }
 
 function find_img_req(text, fileType, size, slide) {
-    let uri = 'http://localhost:80/api/img-search';
+    let uri = g._server + '/api/img-search';
 
     let params = {
         text: text,
@@ -67,6 +69,7 @@ function find_img_req(text, fileType, size, slide) {
         size: size,
         slide: slide
     };
+    
     let param_serial = $.param(params);
     let url = uri + "?" + param_serial;
     $.get(url, function (res) {

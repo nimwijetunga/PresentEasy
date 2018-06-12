@@ -1,6 +1,7 @@
+var g = null;
 
-
-$(document).ready(function(e) {   
+$(document).ready(function(e) {  
+    g = new Global(); 
     sign_in_submit();
  });
 
@@ -16,7 +17,7 @@ $(document).ready(function(e) {
  }
 
  function sign_in_req(username,password){
-     let uri = 'http://localhost:80/api/login';
+     let uri = g._server + '/api/login';
      let params = {
         username:username,
         password:password 
@@ -31,8 +32,7 @@ $(document).ready(function(e) {
             $("#error > #error-p").text(message);
         }else{
             $.cookie("username", username, 1);
-            let global = new Global();
-            window.location.href = global._getPath("/find-img.html");
+            window.location.href = g._getPath("/find-img.html");
         }
     });
  }
