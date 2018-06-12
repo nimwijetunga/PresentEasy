@@ -50,7 +50,6 @@ function delete_img_req(img, username) {
     };
     let param_serial = $.param(params);
     let url = uri + "?" + param_serial;
-    console.log(url);
 
     $.get(url, function (res) {
         if (!res.posted) {
