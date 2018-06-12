@@ -5,13 +5,14 @@ class Global {
         this._path = "";
         this._server = "";
         if(this._env == "DEV"){
-            this._server = "http://localhost:80";
-            this._path = "file:///C:/Users/Nim%20Wijetunga/Documents/PresentEasy/frontend";
+            this._path = "http://localhost:3000";
         }else{
             this._host = (new URL(window.location.href)).hostname;
             this._path = `https://${this._host}`;
-            this._server = this._path;
         }
+
+        this._server = this._path;
+        
         console.log(this._path);
     }
 
