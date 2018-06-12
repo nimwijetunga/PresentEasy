@@ -15,12 +15,6 @@ class Global {
         console.log(this._path);
     }
 
-
-    _getAppName(){
-
-    }
-
-
     _getEnv(){
         if(window.location.href.indexOf("heroku") !== -1)return "PROD";
         return "DEV";
