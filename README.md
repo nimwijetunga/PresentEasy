@@ -50,6 +50,6 @@ Try out the app by opening the file
 index.html
 ```
 
-## Deploy To Heroku Server
+## Deploy To Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/nimwijetunga/PresentEasy)
