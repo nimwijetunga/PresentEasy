@@ -3,5 +3,6 @@
     "description": "A web app to analayze text sentiment and provide suitable images",
     "repository": "https://github.com/nimwijetunga/PresentEasy",
     "keywords": ["node", "express", "HTML5"],
-    "success_url": "/index.html"
+    "success_url": "/index.html",
+    "logo": "https://i.pinimg.com/originals/79/fd/37/79fd378d1cf72399ec04e8f1fc23113c.png"
   }
