@@ -2,7 +2,7 @@
 
 PresentEasy is a web application that allows users to input text and recieve several images based on the tone or mood of their text. This app provides an ideal way for presenters to easily find "background" images that fit their presentations.
 
-## Getting Started
+## Getting Started (Locally)
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
