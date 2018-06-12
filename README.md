@@ -32,16 +32,10 @@ install dependencies
 npm install
 ```
 
-cd into backend folder
-
-```
-cd backend
-```
-
 start the server by running
 
 ```
-node server.js (or nodemon server.js)
+npm start
 ```
 
 Try out the app by opening the file
