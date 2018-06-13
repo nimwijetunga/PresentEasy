@@ -16,6 +16,8 @@ var add_user = function (username, password) {
         usersRef.push({
             email: username,
             password: password
+        }, (error) => {
+            reject(false);
         });
         resolve(true);
     });
@@ -39,23 +41,29 @@ var find_user_info = function (username) {
                 }
                 if (username == email) resolve(user_obj);//User exists
             });
-            resolve(false);//User doesn't exists
+            reject(false);//User doesn't exists
         });
     });
 }
 
 module.exports = {
     login: async function (username, password) {
-        let res = await find_user_info(username);
+        let res = await find_user_info(username).catch((err) => {
+            return false;
+        })
         if (!res) {
-            return await add_user(username, password);
+            return await add_user(username, password).catch((err) => {
+                return false;
+            });
         } else {
             if (res.password == password) return true;
             else return false;
         }
     },
     update_user_img: async function (username, img_url) {
-        let user = await find_user_info(username);
+        let user = await find_user_info(username).catch((err) => {
+            return false;
+        });
         if (!user) return false;
         let images = user.img;
         if (user.img != null) images.push(img_url);
@@ -67,14 +75,16 @@ module.exports = {
         var usersRef = ref.child('users/' + user.key);
 
         return new Promise(function (resolve, reject) {
-            usersRef.update(update, function (err) {
-                if (err) resolve(false);
+            usersRef.update(update, (err) => {
+                if (err) reject(false);
                 else resolve(true);
             })
         });
     },
     get_user_profile: async function (username) {
-        let res = await find_user_info(username);
+        let res = await find_user_info(username).catch((err) => {
+            return false;
+        });
         if (!res) return false;
         let profile = {
             username: res.username,
@@ -83,7 +93,9 @@ module.exports = {
         return profile;
     },
     delete_img: async function (username, img) {
-        let user = await find_user_info(username);
+        let user = await find_user_info(username).catch((err) => {
+            return false;
+        })
 
         if (!user || user.img == undefined) return false;
 
@@ -97,8 +109,8 @@ module.exports = {
         if (index == -1) return false;
 
         return new Promise(function (resolve, reject) {
-            ref.child('users').child(user.key).child('img').child(index).remove(function (err) {
-                if (err) resolve(false);
+            ref.child('users').child(user.key).child('img').child(index).remove((err) => {
+                if (err) reject(false);
                 else resolve(true);
             });
         });

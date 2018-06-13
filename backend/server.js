@@ -36,7 +36,7 @@ async function set_error_login(username, password) {
     if (username == undefined || password == undefined ||username == "" || password ==  "") {
         return (posted(false, "Password OR Username not provided"));
     }
-    let login = await auth.login(username, password);
+    let login = await auth.login(username, password).catch((err) => {return false;});
     if (!login) {
         return (posted(false, "Invalid Password"));
     }
@@ -47,7 +47,7 @@ async function set_error_save(username, img){
     if(username == undefined || img == undefined || img == ""){
         return (posted(false, "Username OR Image NOT Provided"));
     }
-    let save = await auth.update_user_img(username, img);
+    let save = await auth.update_user_img(username, img).catch((err) => {return false;});
     if(!save){
         return(posted(false, "Error Saving Image"));
     }
@@ -58,7 +58,7 @@ async function set_error_delete_img(username, img){
     if(username == undefined || img == undefined){
         return (posted(false, "Username OR Image NOT Provided"));
     }
-    let save = await auth.delete_img(username, img);
+    let save = await auth.delete_img(username, img).catch((err) => {return false;});
     if(!save){
         return(posted(false, "Error Deleting Image"));
     }
@@ -76,7 +76,7 @@ async function get_img(text, fileType, size, slide) {
 
 async function get_profile(username){
     if(username == undefined) return posted(false, "Username not provided");
-    let profile = await auth.get_user_profile(username);
+    let profile = await auth.get_user_profile(username).catch((err) => {return false;});
     if(!profile)return posted(false, "Unable to get profile");
     profile['posted'] = true;
     profile['message'] = "Succesful";
