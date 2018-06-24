@@ -40,8 +40,8 @@ start the server by running
 npm start
 ```
 
-Try out the app by opening the file
+Try out the app by typing in the following into a browser
 
 ```
-index.html
+localhost:3000
 ```
