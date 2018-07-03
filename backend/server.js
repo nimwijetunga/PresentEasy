@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const auth = require('./user_db.js');
 const cors = require('cors');
 
+require('dotenv').config();
+
 function logError(err) {
     return { error: err };
 }
@@ -158,7 +160,7 @@ app.get('/api/profile', [get_res_profile]);
 
 app.get('/api/delete-img', [get_res_del_img]);
 
-app.set( 'port', (process.env.PORT || 3000 ));
+app.set('port', (process.env.PORT || 3000));
 
 app.use(express.static('frontend'));
 
